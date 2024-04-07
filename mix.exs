@@ -3,7 +3,7 @@ defmodule Excountries.Mixfile do
 
   def project do
     [app: :excountries,
-     version: "0.0.3",
+     version: "0.0.4",
      elixir: "~> 1.0",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -30,8 +30,8 @@ defmodule Excountries.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [
-      {:httpoison, "~> 0.7.2"},
-      {:poison, "~> 1.5"}
+      {:httpoison, ">= 2.2.0"},
+      {:poison, ">= 5.0.0"}
     ]
   end
 
