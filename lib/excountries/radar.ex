@@ -35,10 +35,13 @@ defmodule Excountries.Radar do
   ```
   """
   def by_full_name(name, client \\ Excountries.API) do
-    name = String.downcase name
-    client.call("/name/#{name}?fullText=true") |> Poison.decode!(as: [Excountries.Country]) |> List.first
+    name = String.downcase(name)
+
+    client.call("/name/#{name}?fullText=true")
+    |> Poison.decode!(as: [Excountries.Country])
+    |> List.first()
   end
-  
+
   @doc """
   Searches for a country by a substring of it's name or abbreviation:
 
@@ -47,7 +50,7 @@ defmodule Excountries.Radar do
   ```
   """
   def by_name(name, client \\ Excountries.API) do
-    name = String.downcase name
+    name = String.downcase(name)
     client.call("/name/#{name}") |> Poison.decode!(as: [Excountries.Country])
   end
 
@@ -59,7 +62,7 @@ defmodule Excountries.Radar do
   ```
   """
   def by_language(lang, client \\ Excountries.API) do
-    Excountries.LanguageValidator.validate!(lang) 
+    Excountries.LanguageValidator.validate!(lang)
     client.call("/lang/#{lang}") |> Poison.decode!(as: [Excountries.Country])
   end
 
@@ -82,7 +85,9 @@ defmodule Excountries.Radar do
   ```
   """
   def by_capital(capital, client \\ Excountries.API) do
-    client.call("/capital/#{capital}") |> Poison.decode!(as: [Excountries.Country]) |> List.first
+    client.call("/capital/#{capital}")
+    |> Poison.decode!(as: [Excountries.Country])
+    |> List.first()
   end
 
   @doc """
